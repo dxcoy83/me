@@ -40,7 +40,6 @@
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/dxcoy83/dxcoy@main/Brent%20Faiyaz%20-%20TRUST%20%5BOfficial%20Audio%5D%200.mp3" as="audio">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/dxcoy83/dxcoy@main/Lust%20For%20Life%200.mp3" as="audio">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/dxcoy83/dxcoy@main/Die%20For%20You.mp3" as="audio">
-  <link rel="preload" href="Merry_Go_Round.mp3" as="audio">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap"
@@ -113,12 +112,9 @@
       justify-content: center;
       gap: 10px;
       background: #0d0d0d;
-      cursor: default;
+      cursor: pointer;
       transition: opacity 0.9s ease;
-      user-select: none;
     }
-
-    #splash.ready { cursor: pointer; }
 
     #splash.hidden {
       opacity: 0;
@@ -130,11 +126,6 @@
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.18em;
-      color: rgba(255, 255, 255, 0.18);
-      transition: color 0.6s ease;
-    }
-
-    .splash-text.ready {
       color: rgba(255, 255, 255, 0.28);
       animation: blink 2.2s ease-in-out infinite;
     }
@@ -146,57 +137,16 @@
       letter-spacing: 0.1em;
     }
 
-    /* Loading bar */
-    .splash-loader {
-      position: absolute;
-      bottom: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      width: 240px;
-    }
-
-    .splash-loader-bar-wrap {
-      width: 100%;
-      height: 1px;
-      background: rgba(255,255,255,0.07);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .splash-loader-bar {
-      height: 100%;
-      width: 0%;
-      background: rgba(255,255,255,0.3);
-      border-radius: 2px;
-      transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.6s ease, box-shadow 0.6s ease;
-    }
-
-    .splash-loader-bar.done {
-      background: rgba(255,255,255,0.65);
-      box-shadow: 0 0 10px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.08);
-    }
-
-    .splash-loader-label {
-      font-family: 'Geist Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.18);
-      text-align: center;
-      transition: color 0.5s ease;
-      white-space: nowrap;
-    }
-
-    .splash-loader-label.done {
-      color: rgba(255,255,255,0.5);
-    }
-
     @keyframes blink {
-      0%, 100% { opacity: .28 }
-      50%       { opacity: .65 }
+
+      0%,
+      100% {
+        opacity: .28
+      }
+
+      50% {
+        opacity: .65
+      }
     }
 
     /* MAIN */
@@ -433,97 +383,31 @@
       display: flex;
     }
 
-    /* ── RICH ACTIVITY BLOCKS ─────────────────────────────────────────────── */
-    #activityWrap {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-bottom: 7px;
-    }
-
-    .rich-act {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.055);
-      border-radius: 9px;
-      background: rgba(255, 255, 255, 0.02);
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      animation: act-in 0.35s ease;
-    }
-
-    @keyframes act-in {
-      from { opacity: 0; transform: translateY(4px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .rich-act.show { display: flex; }
-
-    .rich-act-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Image area: large image with optional small badge overlay */
-    .rich-act-imgs {
-      position: relative;
-      width: 44px;
-      height: 44px;
+    .act-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      overflow: hidden;
       flex-shrink: 0;
-    }
-
-    .rich-act-large {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
-      background: #1a1a1a;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
     }
 
-    .rich-act-large img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Small icon badge in bottom-right corner */
-    .rich-act-small {
-      position: absolute;
-      bottom: -3px;
-      right: -3px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #1a1a1a;
-      border: 2px solid #0d0d0d;
-      overflow: hidden;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .rich-act-small.show { display: flex; }
-
-    .rich-act-small img {
+    .act-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .rich-act-info {
+    .act-info {
       flex: 1;
       min-width: 0;
     }
 
-    .rich-act-label {
+    .act-type {
       font-family: 'Geist Mono', monospace;
       font-size: 9px;
       letter-spacing: 0.12em;
@@ -532,52 +416,22 @@
       margin-bottom: 3px;
     }
 
-    .rich-act-name {
+    .act-name {
       font-size: 12.5px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.52);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 2px;
     }
 
-    .rich-act-detail,
-    .rich-act-state {
+    .act-detail {
       font-family: 'Geist Mono', monospace;
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.28);
+      color: rgba(255, 255, 255, 0.22);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.5;
-    }
-
-    /* Elapsed time */
-    .rich-act-elapsed {
-      font-family: 'Geist Mono', monospace;
-      font-size: 9.5px;
-      color: rgba(255, 255, 255, 0.18);
       margin-top: 2px;
-    }
-
-    /* Optional progress bar for timed activities */
-    .rich-act-bar-wrap {
-      width: 100%;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 2px;
-      overflow: hidden;
-      display: none;
-    }
-
-    .rich-act-bar-wrap.show { display: block; }
-
-    .rich-act-bar-fill {
-      height: 100%;
-      background: rgba(255, 255, 255, 0.25);
-      border-radius: 2px;
-      transition: width 1s linear;
     }
 
     /* EQ / Spotify */
@@ -772,11 +626,10 @@
     /* Lyrics scroll area */
     .lp-lyrics {
       height: 110px;
-      overflow-y: scroll;
+      overflow-y: auto;
       padding: 8px 14px;
-      overscroll-behavior: contain;
+      scroll-behavior: smooth;
       mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
     }
 
     .lp-lyrics::-webkit-scrollbar {
@@ -787,24 +640,34 @@
       font-family: 'Geist', sans-serif;
       font-size: 12px;
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.18);
       line-height: 1.7;
       text-align: center;
       cursor: pointer;
+      transition: color 0.4s ease;
       padding: 1px 0;
-      opacity: 0.15;
-      transition: opacity 0.35s ease, text-shadow 0.35s ease;
-      will-change: opacity;
     }
 
     .lyric-line.active {
-      opacity: 1;
-      text-shadow: 0 0 22px rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 400;
     }
 
     .lyric-line.past {
-      opacity: 0.22;
-      transition: opacity 0.5s ease, text-shadow 0.5s ease;
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    /* Word-level highlight inside active line */
+    .lyric-line .word {
+      transition: color 0.15s;
+    }
+
+    .lyric-line.active .word.lit {
+      color: #ffffff;
+    }
+
+    .lyric-line.active .word.dim {
+      color: rgba(255, 255, 255, 0.45);
     }
 
     /* Progress / duration */
@@ -1313,15 +1176,9 @@
   <div class="grain"></div>
   <div class="bg-banner" id="bgBanner"></div>
 
-  <div id="splash">
-    <div class="splash-text" id="splashText">loading...</div>
+  <div id="splash" onclick="enter()">
+    <div class="splash-text">click to enter</div>
     <div class="splash-sub">dxcoy.83</div>
-    <div class="splash-loader">
-      <div class="splash-loader-bar-wrap">
-        <div class="splash-loader-bar" id="splashBar"></div>
-      </div>
-      <div class="splash-loader-label" id="splashLabel">initialising</div>
-    </div>
   </div>
 
 
@@ -1423,8 +1280,15 @@
         <div class="quote" id="quoteEl"><span class="cursor"></span></div>
       </div>
 
-      <!-- Game / Rich Presence Activity -->
-      <div id="activityWrap"></div>
+      <!-- Game activity -->
+      <div class="presence-block" id="actBlock">
+        <div class="act-icon" id="actIcon">🎮</div>
+        <div class="act-info">
+          <div class="act-type" id="actType">playing</div>
+          <div class="act-name" id="actName"></div>
+          <div class="act-detail" id="actDetail"></div>
+        </div>
+      </div>
 
       <!-- Spotify -->
       <div class="presence-block" id="spotBlock">
@@ -1447,7 +1311,6 @@
           <button class="lp-tab active" onclick="switchSong(0)">trust</button>
           <button class="lp-tab" onclick="switchSong(1)">lust for life</button>
           <button class="lp-tab" onclick="switchSong(2)">die for you</button>
-          <button class="lp-tab" onclick="switchSong(3)">merry go round</button>
         </div>
         <div class="lp-header">
           <div class="lp-art" id="lpArt">🎵</div>
@@ -1627,40 +1490,45 @@
         art: DRAKE_ART,
         src: 'https://cdn.jsdelivr.net/gh/dxcoy83/dxcoy@main/Lust%20For%20Life%200.mp3',
         lyrics: [
-          { t: 20.95, text: "I'm tryna do it all tonight, I got plans" },
-          { t: 24.41, text: "I got a certain lust for life and as it stands" },
-          { t: 30.59, text: "Everything is going as right as it can" },
-          { t: 37.17, text: "They tryna shoot down my flight before it lands, before it lands" },
-          { t: 45.08, text: "But you could miss me with all that" },
-          { t: 47.14, text: "Diss me, then crawl back" },
-          { t: 49.29, text: "I really wish y'all would fall back" },
-          { t: 51.93, text: "But gettin rich s'posed to solve that" },
-          { t: 54.85, text: "And these days, women make offers" },
-          { t: 57.27, text: "And who the hell am I to say? (no, no, no)" },
-          { t: 60.52, text: "My ex sendin' late night texts" },
-          { t: 62.45, text: "'Cause she don't know how to let (go, go, go)" },
-          { t: 66.55, text: "Uh, she in love" },
-          { t: 69.24, text: "And as for them pretty light-skinned models" },
-          { t: 71.88, text: "Standin in the cold, ah, yeah, they with us" },
-          { t: 74.75, text: "Let them girls in for a drink and I'm all in they ear" },
-          { t: 80.09, text: "Saying she should be the one I see every time that I'm here" },
-          { t: 86.02, text: "But when am I really even here?" },
-          { t: 88.95, text: "Black Surburban with the tint on it" },
-          { t: 90.58, text: "Fresher than a pillow with a mint on it" },
-          { t: 93.25, text: "The game got these old handprints on it" },
-          { t: 95.54, text: "But I'mma be the one to pour cement on it" },
-          { t: 98.53, text: "Uh, and start over" },
-          { t: 102.28, text: "And show up in a Margiela tux, I don't really give a fuck" },
-          { t: 105.65, text: "And we only gettin older" },
-          { t: 108.06, text: "So what I tend to do is to think of today as the past" },
-          { t: 113.87, text: "It's funny when you comin' in first, but you hope that you last" },
-          { t: 118.32, text: "You just hope that it last" },
-          { t: 122.57, text: "♪" },
-          { t: 143.72, text: "Throw your ones up in the air" },
-          { t: 149.42, text: "Throw your ones up in the air for her, oh-oh" },
-          { t: 155.65, text: "Throw your ones up in the air" },
-          { t: 160.67, text: "Throw your ones up" },
-          { t: 161.66, text: "♪" },
+          { t: 19.50, text: "I'm tryna do it all tonight, I got plans" },
+          { t: 25.38, text: "I got a certain lust for life and as it stands" },
+          { t: 30.66, text: "Everything is going as right as it can" },
+          { t: 33.65, text: "♪" },
+          { t: 36.29, text: "They tryna shoot down my flight before it lands, before it lands" },
+          { t: 39.41, text: "♪" },
+          { t: 44.64, text: "But you could miss me with all that" },
+          { t: 46.88, text: "Diss me, then crawl back" },
+          { t: 49.62, text: "I really wish y'all would fall back" },
+          { t: 52.35, text: "But gettin rich s'posed to solve that" },
+          { t: 55.06, text: "And these days, women make offers" },
+          { t: 57.01, text: "And who the hell am I to say (No, no, no)?" },
+          { t: 60.35, text: "My ex sendin' late night texts" },
+          { t: 62.35, text: "'Cause she don't know how to let (Go, go, go)" },
+          { t: 66.73, text: "Uh, she in love" },
+          { t: 69.58, text: "And as for them pretty light-skinned models" },
+          { t: 71.55, text: "Standin in the cold, ah, yeah, they with us" },
+          { t: 74.99, text: "Let them girls in for a drink and I'm all in they ear" },
+          { t: 79.92, text: "Saying she should be the one I see every time that I'm here" },
+          { t: 85.54, text: "But when am I really even here?" },
+          { t: 88.58, text: "Black Surburban with the tint on it" },
+          { t: 90.45, text: "Fresher than a pillow with a mint on it" },
+          { t: 92.93, text: "The game got these old handprints on it" },
+          { t: 95.63, text: "But I'mma be the one to pour cement on it" },
+          { t: 99.18, text: "Uh, and start over" },
+          { t: 102.15, text: "And show up in a Margiela tux, I don't really give a fuck" },
+          { t: 105.45, text: "And we only gettin older" },
+          { t: 107.27, text: "So what I tend to do is to think of today as the past" },
+          { t: 110.32, text: "♪" },
+          { t: 112.62, text: "It's funny when you comin' in first, but you hope that you last" },
+          { t: 117.91, text: "You just hope that it last" },
+          { t: 121.01, text: "♪" },
+          { t: 143.51, text: "Throw your ones up in the air" },
+          { t: 146.78, text: "♪" },
+          { t: 149.44, text: "Throw your ones up in the air for her, oh-oh" },
+          { t: 152.69, text: "♪" },
+          { t: 155.16, text: "Throw your ones up in the air" },
+          { t: 160.02, text: "Throw your ones up" },
+          { t: 160.97, text: "♪" },
         ]
       },
       {
@@ -1683,82 +1551,24 @@
           { t: 55.02, text: "Somebody in another skin (another skin)" },
           { t: 59.54, text: "I heard that you're happy without me" },
           { t: 64.56, text: "And I hope it's true (I hope, I hope it's true)" },
-          { t: 68.80, text: "♪" },
           { t: 72.97, text: "It kills me a little, that's okay" },
           { t: 77.59, text: "'Cause I'd die for you" },
           { t: 82.89, text: "You know I'd still die for you" },
-          { t: 88.00, text: "♪" },
           { t: 98.72, text: "I hope you're getting everything you needed" },
           { t: 102.22, text: "Found the puzzle piece and feel completed" },
           { t: 105.28, text: "Just wanted you to know every reason" },
           { t: 108.78, text: "Hope you really know that I mean that" },
           { t: 111.60, text: "Couldn't see the forest from the trees" },
           { t: 117.60, text: "Only time we speak is in my dreams" },
-          { t: 122.50, text: "♪" },
           { t: 126.56, text: "Burning photos" },
           { t: 129.93, text: "Had to learn to let go" },
           { t: 132.67, text: "I used to be" },
           { t: 139.43, text: "Somebody in another skin (another skin)" },
           { t: 144.05, text: "I heard that you're happy without me" },
           { t: 148.95, text: "And I hope it's true (I hope, I hope it's true)" },
-          { t: 153.00, text: "♪" },
           { t: 156.99, text: "It kills me a little, that's okay" },
           { t: 161.87, text: "'Cause I'd die for you" },
-          { t: 167.26, text: "You know I'd still die for you" },
-          { t: 172.50, text: "♪" },
-        ]
-      },
-      {
-        title: 'Merry Go Round',
-        artist: 'BTS',
-        art: '🎡',
-        src: 'Merry_Go_Round.mp3',
-        lyrics: [
-          { t: 11.06, text: "I wish that I could tell you that it's over (over)" },
-          { t: 16.74, text: "I wish that I could walk away from pain" },
-          { t: 22.49, text: "My life is like a broken roller coaster" },
-          { t: 28.19, text: "But maybe I'm the only one to blame" },
-          { t: 35.13, text: "I can't get off this merry-go-round" },
-          { t: 40.80, text: "It spins me around (around, around)" },
-          { t: 46.66, text: "I do my best, but I can't slow down" },
-          { t: 52.49, text: "This merry-go-round" },
-          { t: 56.37, text: "And I, I can't get off of this ride" },
-          { t: 63.29, text: "♪" },
-          { t: 67.74, text: "I try, this happens every time" },
-          { t: 74.70, text: "♪" },
-          { t: 79.71, text: "어른이 된 것 같은 기분이지만" },
-          { t: 82.50, text: "고민은 뭐 여전하지 (oh, yeah, oh, yeah)" },
-          { t: 85.41, text: "매일 같은 일상 속 회전목마나" },
-          { t: 88.42, text: "쳇바퀴나 매한가지 (매한가지)" },
-          { t: 91.00, text: "Oh, 답이 없는 질문" },
-          { t: 95.33, text: "미궁 속에서의 질주" },
-          { t: 98.25, text: "다들 괜찮은 척하며" },
-          { t: 99.90, text: "웃고 있지 모두 다, 다, 다, 다" },
-          { t: 102.42, text: "I wish that I could tell you that it's over (over)" },
-          { t: 108.12, text: "I wish that I could walk away from pain" },
-          { t: 113.85, text: "My life is like a broken roller coaster" },
-          { t: 119.52, text: "But maybe I'm the only one to blame" },
-          { t: 126.76, text: "I can't get off this merry-go-round" },
-          { t: 132.40, text: "It spins me around (around, around)" },
-          { t: 138.29, text: "I do my best, but I can't slow down" },
-          { t: 143.95, text: "This merry-go-round" },
-          { t: 147.98, text: "And I, I can't get off of this ride" },
-          { t: 154.69, text: "♪" },
-          { t: 159.35, text: "I try, this happens every time" },
-          { t: 166.14, text: "♪" },
-          { t: 170.94, text: "Spinnin' up, down, just 'round and 'round" },
-          { t: 176.24, text: "I'm fallin' apart, still bound to ground" },
-          { t: 182.74, text: "멈출 수 없는 굴레 속 내 동심이 소리치잖아 (yeah, yeah, yeah, yeah)" },
-          { t: 188.58, text: "나 원 없이 탈 만큼 탔으니, please, take me out, ma" },
-          { t: 193.44, text: "침대는 나의 관, my bed is my coffin" },
-          { t: 196.51, text: "어쩜 내 세상은 거대한 caffeine" },
-          { t: 199.27, text: "매일 널 죽으러 가 꿈을 끌 순 없나?" },
-          { t: 202.62, text: "멈출 수 없는 춤을 추고 있잖아" },
-          { t: 205.52, text: "또 생각에, 생각에, 생각에, 생각" },
-          { t: 208.54, text: "생각하지 말잔 생각을 해 난" },
-          { t: 211.46, text: "빙글 또 빙글 행복하니?" },
-          { t: 214.17, text: "웃어 줘 끝까지" },
-          { t: 215.89, text: "♪" },
+          { t: 167.26, text: "You know I'd still die for you" }
         ]
       }
     ];
@@ -1769,8 +1579,15 @@
     let currentSong = 0;
     let isPlaying = false;
 
-    // Audio preload array — filled by the preloader below
-    const preloadedAudio = new Array(SONGS.length).fill(null);
+    // Aggressively preload both audio files into Audio objects
+    const preloadedAudio = SONGS.map(s => {
+      const a = new Audio();
+      a.preload = 'auto';
+      a.crossOrigin = 'anonymous';
+      a.src = s.src;
+      a.load();
+      return a;
+    });
 
     // ── WEB AUDIO / VISUALIZER (Canvas) ─────────────────────────────────────
     let audioCtx, analyser, source;
@@ -1942,22 +1759,10 @@
 
     function loadSong(idx) {
       const s = SONGS[idx];
-      // Use the preloaded Audio element's src directly so no re-buffering occurs
-      const preloaded = preloadedAudio[idx];
-      if (preloaded && preloaded.src) {
-        // Only reassign if src actually differs (avoids unnecessary rebuffer)
-        if (audio.src !== preloaded.src) {
-          audio.src = preloaded.src;
-        }
-        // If preloaded has metadata already, populate duration immediately
-        if (preloaded.duration && !isNaN(preloaded.duration)) {
-          document.getElementById('lpDuration').textContent = fmtTime(preloaded.duration);
-        }
-      } else {
-        audio.src = s.src;
-      }
+      audio.src = s.src;
       document.getElementById('lpTitle').textContent = s.title;
       document.getElementById('lpArtist').textContent = s.artist;
+      // Album art
       const artEl = document.getElementById('lpArt');
       artEl.innerHTML = s.art ? `<img src="${s.art}" alt="${s.title}">` : '🎵';
       document.querySelectorAll('.lp-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
@@ -1965,19 +1770,22 @@
       lastActiveLine = -1;
       document.getElementById('lpFill').style.width = '0%';
       document.getElementById('lpCurrent').textContent = '0:00';
-      if (!preloaded || !preloaded.duration || isNaN(preloaded.duration)) {
-        document.getElementById('lpDuration').textContent = '0:00';
-      }
+      document.getElementById('lpDuration').textContent = '0:00';
     }
 
     function renderLyrics(idx) {
       const lyrics = SONGS[idx].lyrics;
       const container = document.getElementById('lpLyrics');
       container.innerHTML = lyrics.map((l, i) =>
-        `<div class="lyric-line" id="ll${i}" onclick="seekTo(${l.t})">${l.text}</div>`
+        `<div class="lyric-line" id="ll${i}" onclick="seekTo(${l.t})">${wrapWords(l.text)}</div>`
       ).join('');
       container.scrollTop = 0;
+      // Cache line elements for fast lookup
       lineEls = lyrics.map((_, i) => document.getElementById('ll' + i));
+    }
+
+    function wrapWords(text) {
+      return text.split(' ').map(w => `<span class="word dim">${w}</span>`).join(' ');
     }
 
     function switchSong(idx) {
@@ -2047,6 +1855,7 @@
     // ── LYRIC SYNC ────────────────────────────────────────────────────────────
     let lastActiveLine = -1;
     let lineEls = [];
+    let wordTimers = [];
 
     // Use requestAnimationFrame for zero-lag lyric sync instead of timeupdate
     function syncLoop() {
@@ -2061,17 +1870,20 @@
       document.getElementById('lpFill').style.width = pct + '%';
       document.getElementById('lpCurrent').textContent = fmtTime(t);
 
-      // Binary-search for active lyric line — +0.08s lookahead compensates for visual lag
+      // Binary-search for active lyric line
       const lyrics = SONGS[currentSong].lyrics;
-      const tLook = t + 0.08;
       let lo = 0, hi = lyrics.length - 1, active = -1;
       while (lo <= hi) {
         const mid = (lo + hi) >> 1;
-        if (lyrics[mid].t <= tLook) { active = mid; lo = mid + 1; }
+        if (lyrics[mid].t <= t) { active = mid; lo = mid + 1; }
         else hi = mid - 1;
       }
 
       if (active !== lastActiveLine) {
+        // Clear old word timers
+        wordTimers.forEach(clearTimeout);
+        wordTimers = [];
+
         if (lastActiveLine >= 0 && lineEls[lastActiveLine]) {
           lineEls[lastActiveLine].classList.remove('active');
           lineEls[lastActiveLine].classList.add('past');
@@ -2084,15 +1896,31 @@
           if (i < active) { el.classList.add('past'); el.classList.remove('active'); }
           else if (i === active) {
             el.classList.add('active'); el.classList.remove('past');
+            // Scroll only within the lyrics container — never the whole page
             const container = document.getElementById('lpLyrics');
-            const elTop = el.offsetTop - container.offsetTop;
-            const target = elTop - (container.clientHeight / 2) + (el.clientHeight / 2);
+            const target = el.offsetTop - container.offsetTop - (container.clientHeight / 2) + (el.clientHeight / 2);
             container.scrollTo({ top: target, behavior: 'smooth' });
+            animateWords(el, lyrics, active, t);
           } else {
             el.classList.remove('active', 'past');
           }
         });
       }
+    }
+
+    function animateWords(el, lyrics, lineIdx, startT) {
+      const words = el.querySelectorAll('.word');
+      if (!words.length) return;
+      if (words.length <= 1) { words.forEach(w => { w.classList.remove('dim'); w.classList.add('lit'); }); return; }
+      const nextT = lyrics[lineIdx + 1] ? lyrics[lineIdx + 1].t : (audio.duration || startT + 4);
+      const duration = Math.max(0.3, nextT - lyrics[lineIdx].t);
+      const perWord = (duration / words.length) * 1000;
+      words.forEach((w, wi) => {
+        const id = setTimeout(() => {
+          if (el.classList.contains('active')) { w.classList.remove('dim'); w.classList.add('lit'); }
+        }, wi * perWord);
+        wordTimers.push(id);
+      });
     }
 
     audio.addEventListener('loadedmetadata', () => {
@@ -2190,140 +2018,6 @@
         else if (j?.banner_color) applyBannerColor(j.banner_color);
       }).catch(() => {});
 
-    // ── RICH ACTIVITY RENDERER ────────────────────────────────────────────────
-    const TYPE_LABEL = { 0: 'playing', 1: 'streaming', 2: 'listening to', 3: 'watching', 5: 'competing in' };
-    let activityTimers = []; // setInterval handles for elapsed clocks
-
-    function resolveAssetUrl(image, appId) {
-      if (!image) return null;
-      // External image (Spotify, Steam, etc.) — strip the "mp:external/" prefix
-      if (image.startsWith('mp:external/')) {
-        const encoded = image.slice('mp:external/'.length);
-        // The rest is a URL-encoded HTTPS URL embedded in the path
-        const parts = encoded.split('/https/');
-        if (parts.length > 1) return 'https://' + parts[1];
-        return null;
-      }
-      // Spotify asset — shouldn't normally appear here but handle it
-      if (image.startsWith('spotify:')) return null;
-      // Standard Discord CDN asset
-      if (appId) return `https://cdn.discordapp.com/app-assets/${appId}/${image}.png`;
-      return null;
-    }
-
-    function fmtElapsed(startMs) {
-      const s = Math.floor((Date.now() - startMs) / 1000);
-      const m = Math.floor(s / 60);
-      const h = Math.floor(m / 60);
-      if (h > 0) return `${h}h ${m % 60}m elapsed`;
-      if (m > 0) return `${m}m ${s % 60}s elapsed`;
-      return `${s}s elapsed`;
-    }
-
-    function fmtDuration(ms) {
-      const s = Math.floor(ms / 1000);
-      const m = Math.floor(s / 60);
-      const h = Math.floor(m / 60);
-      if (h > 0) return `${h}:${String(m % 60).padStart(2,'0')}:${String(s % 60).padStart(2,'0')}`;
-      return `${m}:${String(s % 60).padStart(2,'0')}`;
-    }
-
-    function buildActivityBlock(act, idx) {
-      const wrap = document.createElement('div');
-      wrap.className = 'rich-act show';
-      wrap.id = `richAct_${idx}`;
-
-      const largeUrl  = resolveAssetUrl(act.assets?.large_image, act.application_id);
-      const smallUrl  = resolveAssetUrl(act.assets?.small_image, act.application_id);
-      const largeTip  = act.assets?.large_text  || act.name || '';
-      const smallTip  = act.assets?.small_text  || '';
-      const label     = TYPE_LABEL[act.type] || 'doing';
-      const hasStart  = act.timestamps?.start != null;
-      const hasEnd    = act.timestamps?.end   != null;
-      const startMs   = act.timestamps?.start;
-      const endMs     = act.timestamps?.end;
-
-      wrap.innerHTML = `
-        <div class="rich-act-top">
-          <div class="rich-act-imgs" title="${largeTip}">
-            <div class="rich-act-large" id="richLarge_${idx}">${largeUrl ? '' : '🎮'}</div>
-            <div class="rich-act-small${smallUrl ? ' show' : ''}" id="richSmall_${idx}" title="${smallTip}"></div>
-          </div>
-          <div class="rich-act-info">
-            <div class="rich-act-label">${label}</div>
-            <div class="rich-act-name">${act.name || ''}</div>
-            ${act.details ? `<div class="rich-act-detail" id="richDetail_${idx}">${act.details}</div>` : ''}
-            ${act.state   ? `<div class="rich-act-state"  id="richState_${idx}">${act.state}</div>`   : ''}
-            ${hasStart    ? `<div class="rich-act-elapsed" id="richElapsed_${idx}"></div>` : ''}
-          </div>
-        </div>
-        ${(hasStart && hasEnd) ? `
-        <div class="rich-act-bar-wrap show">
-          <div class="rich-act-bar-fill" id="richBar_${idx}"></div>
-        </div>` : ''}
-      `;
-
-      // Load images after building DOM so fallback emoji is visible immediately
-      if (largeUrl) {
-        const img = new Image();
-        img.onload = () => {
-          const el = wrap.querySelector(`#richLarge_${idx}`);
-          if (el) { el.innerHTML = ''; el.appendChild(img); }
-        };
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
-        img.alt = largeTip;
-        img.src = largeUrl;
-      }
-      if (smallUrl) {
-        const sImg = new Image();
-        sImg.onload = () => {
-          const el = wrap.querySelector(`#richSmall_${idx}`);
-          if (el) { el.classList.add('show'); el.innerHTML = ''; el.appendChild(sImg); }
-        };
-        sImg.style.cssText = 'width:100%;height:100%;object-fit:cover;';
-        sImg.alt = smallTip;
-        sImg.src = smallUrl;
-      }
-
-      // Elapsed timer — runs every second
-      if (hasStart) {
-        const elapsedEl = wrap.querySelector(`#richElapsed_${idx}`);
-        if (elapsedEl) {
-          elapsedEl.textContent = fmtElapsed(startMs);
-          const tid = setInterval(() => {
-            if (!document.body.contains(elapsedEl)) { clearInterval(tid); return; }
-            elapsedEl.textContent = fmtElapsed(startMs);
-            // Progress bar if we also have an end time
-            if (hasEnd) {
-              const total = endMs - startMs;
-              const gone  = Date.now() - startMs;
-              const pct   = Math.min(100, Math.max(0, (gone / total) * 100));
-              const barEl = wrap.querySelector(`#richBar_${idx}`);
-              if (barEl) barEl.style.width = pct + '%';
-            }
-          }, 1000);
-          activityTimers.push(tid);
-        }
-      }
-
-      return wrap;
-    }
-
-    function renderActivities(activities) {
-      // Clear old timers and blocks
-      activityTimers.forEach(clearInterval);
-      activityTimers = [];
-      const wrap = document.getElementById('activityWrap');
-      if (!wrap) return;
-      wrap.innerHTML = '';
-
-      // Filter: exclude custom status (type 4) and Spotify (handled separately)
-      const acts = (activities || []).filter(a => a.type !== 4 && a.name !== 'Spotify');
-      acts.slice(0, 2).forEach((act, i) => {
-        wrap.appendChild(buildActivityBlock(act, i));
-      });
-    }
-
     function applyData(d) {
       const u = d.discord_user;
       if (u?.avatar) {
@@ -2332,34 +2026,31 @@
       }
       // banner_color fallback from WS if API fetch didn't get a banner image
       if (u?.banner_color) applyBannerColor(u.banner_color);
-
-      // Status dot
       const s = d.discord_status || 'offline';
       document.getElementById('statusDot').className = 'status-dot ' + s;
-
-      // Custom status (type 4)
       const custom = (d.activities || []).find(a => a.type === 4);
       const statusEl = document.getElementById('statusText');
       if (custom) {
         const parts = [custom.emoji?.name, custom.state].filter(Boolean);
-        statusEl.textContent = parts.length ? parts.join(' ') : '';
-        statusEl.style.display = parts.length ? '' : 'none';
-      } else {
-        statusEl.style.display = 'none';
+        if (parts.length) { statusEl.textContent = parts.join(' '); statusEl.style.display = ''; return; }
       }
-
-      // Spotify block
-      const spotBlock = document.getElementById('spotBlock');
+      statusEl.style.display = 'none';
       if (d.spotify) {
-        spotBlock.classList.add('show');
-        document.getElementById('trackName').textContent   = d.spotify.song   || '';
+        document.getElementById('spotBlock').classList.add('show');
+        document.getElementById('trackName').textContent = d.spotify.song || '';
         document.getElementById('trackArtist').textContent = d.spotify.artist || '';
-      } else {
-        spotBlock.classList.remove('show');
       }
-
-      // Rich game/app activities
-      renderActivities(d.activities);
+      const act = (d.activities || []).find(a => a.type !== 4 && a.name !== 'Spotify');
+      if (act) {
+        document.getElementById('actBlock').classList.add('show');
+        const typeMap = { 0: 'playing', 1: 'streaming', 3: 'watching', 5: 'competing in' };
+        document.getElementById('actType').textContent = typeMap[act.type] || 'doing';
+        document.getElementById('actName').textContent = act.name || '';
+        document.getElementById('actDetail').textContent = act.details || act.state || '';
+        if (act.assets?.large_image && act.application_id) {
+          document.getElementById('actIcon').innerHTML = `<img src="https://cdn.discordapp.com/app-assets/${act.application_id}/${act.assets.large_image}.png" alt="">`;
+        }
+      }
     }
 
     function connectLanyard() {
@@ -2494,155 +2185,8 @@
       document.getElementById('mobDrawer').classList.remove('open');
     }
 
-    // ── PRELOADER ─────────────────────────────────────────────────────────────
-    // Track all assets that must load before "click to enter" is shown
-    // Each task has a weight (total = 100) and a done flag
-    const LOAD_TASKS = {
-      fonts:   { weight: 8,  done: false, label: 'loading fonts'        },
-      video:   { weight: 18, done: false, label: 'loading video'         },
-      audio0:  { weight: 22, done: false, label: 'buffering trust'       },
-      audio1:  { weight: 22, done: false, label: 'buffering lust for life' },
-      audio2:  { weight: 22, done: false, label: 'buffering die for you' },
-      lyrics:  { weight: 5,  done: false, label: 'syncing lyrics'        },
-      dom:     { weight: 3,  done: false, label: 'rendering'             },
-    };
-
-    let _loadReady = false;
-
-    function getProgress() {
-      let done = 0, total = 0;
-      for (const k in LOAD_TASKS) {
-        total += LOAD_TASKS[k].weight;
-        if (LOAD_TASKS[k].done) done += LOAD_TASKS[k].weight;
-      }
-      return Math.round((done / total) * 100);
-    }
-
-    function getCurrentLabel() {
-      // Return the label of the first incomplete task
-      for (const k in LOAD_TASKS) {
-        if (!LOAD_TASKS[k].done) return LOAD_TASKS[k].label;
-      }
-      return 'finished loading awesomeness';
-    }
-
-    function tickLoader() {
-      const pct = getProgress();
-      const bar   = document.getElementById('splashBar');
-      const label = document.getElementById('splashLabel');
-      if (bar)   bar.style.width = pct + '%';
-      if (label) label.textContent = getCurrentLabel();
-    }
-
-    function markDone(key) {
-      if (LOAD_TASKS[key] && !LOAD_TASKS[key].done) {
-        LOAD_TASKS[key].done = true;
-        tickLoader();
-        checkAllDone();
-      }
-    }
-
-    function checkAllDone() {
-      const allDone = Object.values(LOAD_TASKS).every(t => t.done);
-      if (allDone && !_loadReady) {
-        _loadReady = true;
-        onLoadComplete();
-      }
-    }
-
-    function onLoadComplete() {
-      const splash    = document.getElementById('splash');
-      const splashTxt = document.getElementById('splashText');
-      const bar       = document.getElementById('splashBar');
-      const label     = document.getElementById('splashLabel');
-
-      // Final bar fill
-      if (bar)   { bar.style.width = '100%'; bar.classList.add('done'); }
-      if (label) { label.textContent = 'finished loading awesomeness'; label.classList.add('done'); }
-
-      // Short pause then unlock click
-      setTimeout(() => {
-        if (splashTxt) { splashTxt.textContent = 'click to enter'; splashTxt.classList.add('ready'); }
-        if (splash)    { splash.classList.add('ready'); splash.addEventListener('click', enter, { once: true }); }
-      }, 700);
-    }
-
-    // ── PRELOAD ASSETS ────────────────────────────────────────────────────────
-
-    // 1. Fonts — use FontFace API or fallback via document.fonts.ready
-    document.fonts.ready.then(() => markDone('fonts')).catch(() => markDone('fonts'));
-
-    // 2. Background video
-    (function preloadVideo() {
-      const vid = document.getElementById('bgVideo');
-      if (!vid) { markDone('video'); return; }
-      // readyState 3 = HAVE_FUTURE_DATA, 4 = HAVE_ENOUGH_DATA
-      if (vid.readyState >= 3) { markDone('video'); return; }
-      const onReady = () => { markDone('video'); vid.removeEventListener('canplaythrough', onReady); };
-      vid.addEventListener('canplaythrough', onReady);
-      // Safety timeout — don't block on slow CDN
-      setTimeout(() => markDone('video'), 8000);
-    })();
-
-    // 3. Audio preloading — one Audio element per song, buffered in parallel
-    (function preloadAudios() {
-      const keys = ['audio0', 'audio1', 'audio2'];
-      SONGS.forEach((song, idx) => {
-        const key = keys[idx] || ('audio' + idx);
-        if (!song.src) { markDone(key); return; }
-
-        const a = new Audio();
-        a.preload = 'auto';
-        a.crossOrigin = 'anonymous';
-        a.src = song.src;
-        preloadedAudio[idx] = a;
-
-        let done = false;
-        const finish = () => {
-          if (done) return;
-          done = true;
-          markDone(key);
-        };
-
-        // canplaythrough = enough buffered to play without interruption
-        a.addEventListener('canplaythrough', finish, { once: true });
-        a.addEventListener('error', finish, { once: true });
-
-        // Safety timeout — don't block forever on slow CDN (20s per track)
-        setTimeout(finish, 20000);
-        a.load();
-      });
-    })();
-
-    // 4. Lyrics pre-validation — verify all timestamps are valid numbers
-    (function validateLyrics() {
-      let ok = true;
-      for (const song of SONGS) {
-        if (!Array.isArray(song.lyrics)) { ok = false; break; }
-        for (const line of song.lyrics) {
-          if (typeof line.t !== 'number' || isNaN(line.t) || typeof line.text !== 'string') {
-            ok = false; break;
-          }
-        }
-        if (!ok) break;
-      }
-      // Lyrics are in-memory JS — always instant, but give it a tick to be thorough
-      requestAnimationFrame(() => markDone('lyrics'));
-    })();
-
-    // 5. DOM ready
-    if (document.readyState === 'complete') {
-      markDone('dom');
-    } else {
-      window.addEventListener('load', () => markDone('dom'), { once: true });
-    }
-
-    // Kick off initial progress tick so bar isn't empty on first render
-    requestAnimationFrame(tickLoader);
-
     // ── ENTER ─────────────────────────────────────────────────────────────────
     function enter() {
-      if (!_loadReady) return;
       document.getElementById('splash').classList.add('hidden');
       const vid = document.getElementById('bgVideo');
       vid.play().catch(() => {});
@@ -2656,13 +2200,11 @@
         }
         connectLanyard();
         buildVisualizer();
-        // Pick a random song, set it up BEFORE creating AudioContext
-        // so audio.src is set before createMediaElementSource
-        currentSong = Math.floor(Math.random() * SONGS.length);
-        loadSong(currentSong); // sets audio.src from preloadedAudio
-        setupAudioContext();   // creates MediaElementSource from audio — must be after src set
+        setupAudioContext();
         syncLoop();
         tickVisualizer();
+        currentSong = Math.floor(Math.random() * SONGS.length);
+        loadSong(currentSong);
         audio.play().then(() => {
           isPlaying = true;
           document.getElementById('playIcon').setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z');
